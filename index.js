@@ -74,8 +74,8 @@ let contactMessages = []
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "abdelrhmanahmed23i8@gmail.com",
-    pass: "mdpj otvt lous npag",
+    user: "dotcode16@gmail.com",
+    pass: "mmem nprp tqzt lebc",
   },
 })
 
