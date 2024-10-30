@@ -101,7 +101,7 @@ app.post("/api/contact", (req, res) => {
   // Send an email with the form data
   const mailOptions = {
     from: email,
-    to: "abdelrhmanahmed23i8@gmail.com",
+    to: "dotcode16@gmail.com",
     subject: `New Contact Form Submission from ${name}`,
     text: `You have a new contact form submission:
         
