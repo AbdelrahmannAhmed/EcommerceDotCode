@@ -63,7 +63,7 @@ app.post(
     res.json({ message: "Success", data: checkout })
   })
 )
-
+//=======
 app.use(cors())
 app.use(express.json())
 app.use("/uploads", express.static("uploads"))
