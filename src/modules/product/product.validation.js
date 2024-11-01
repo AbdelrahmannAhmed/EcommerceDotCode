@@ -32,7 +32,7 @@ const addProductValidation = Joi.object({
 
 // Validation for updating a product
 const updateProductValidation = Joi.object({
-  title: Joi.string().min(3).max(50).optional(),
+  name: Joi.string().min(3).max(50).optional(),
   Desc: Joi.string().min(10).max(2000).optional(),
   image: imageSchema.optional(),
   images: Joi.array().items(imageSchema).optional(),
