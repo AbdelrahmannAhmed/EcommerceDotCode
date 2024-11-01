@@ -63,7 +63,7 @@ export function getAll(Model, modelName = "", populateOptions = "") {
     const documents = await features.pagination()
 
     res.status(200).json({
-      message: messages.subCategory.successGet,
+      message: "Document get Successfully ",
       totalDocuments: totalDocuments,
       pageNumber: features.pageNumber,
       limit: features.limit,
