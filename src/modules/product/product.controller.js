@@ -97,16 +97,17 @@ const getProduct = catchError(async (req, res, next) => {
 const deleteProduct = deleteOne(Product)
 
 const updateProduct = catchError(async (req, res, next) => {
-  req.body.name ? (req.body.slug = slugify(req.body.name)) : ""
+  // req.body.name ? (req.body.slug = slugify(req.body.name)) : ""
+  req.body.slug = slugify(req.body.name)
 
-  if (req.files) {
-    if (req.files.image && req.files.image.length) {
-      req.body.image = req.files.image[0].filename
-    }
-    if (req.files.images && req.files.images.length) {
-      req.body.images = req.files.images.map((img) => img.filename)
-    }
-  }
+  // if (req.files) {
+  //   if (req.files.image && req.files.image.length) {
+  //     req.body.image = req.files.image[0].filename
+  //   }
+  //   if (req.files.images && req.files.images.length) {
+  //     req.body.images = req.files.images.map((img) => img.filename)
+  //   }
+  // }
 
   const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
