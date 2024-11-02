@@ -85,7 +85,13 @@ const createCheckoutSession = catchError(async (req, res, next) => {
     metadata: req.body.shippingAddress,
   })
   await Cart.deleteOne({ _id: cart._id })
-
+  let order = new Order({
+    user: req.user._id,
+    orderItems: cart.cartItems,
+    shippingAddress: req.body.shippingAddress,
+    totalOrderPrice: totalOrderPrice,
+  })
+  await order.save()
   res.status(200).json({ message: "success", data: session })
 })
 
