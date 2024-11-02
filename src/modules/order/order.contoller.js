@@ -91,6 +91,8 @@ const createCheckoutSession = catchError(async (req, res, next) => {
     shippingAddress: req.body.shippingAddress,
     totalOrderPrice: totalOrderPrice / 100,
     paymentType: "card",
+    isPaid: true,
+    paidAt: new Date(),
   })
   await order.save()
   res.status(200).json({ message: "success", data: session })
