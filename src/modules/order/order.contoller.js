@@ -47,16 +47,6 @@ const getUserOrder = catchError(async (req, res, next) => {
   let orders = await Order.find({ user: req.params.userid }).populate("orderItems.product")
   let user = await User.findById(req.params.userid)
   if (req.user._id != req.params.userid) return next(new AppError("User is not authorized to access this orders", 401))
-  let order = new Order({
-    user: req.user._id,
-    orderItems: cart.cartItems,
-    shippingAddress: req.body.shippingAddress,
-    totalOrderPrice: totalOrderPrice / 100,
-    paymentType: "card",
-    isPaid: true,
-    paidAt: new Date(),
-  })
-  await order.save()
   res.status(200).json({ message: `all order for user ${user.name}`, orders })
 })
 
