@@ -49,7 +49,11 @@ const updateQuantity = catchError(async (req, res, next) => {
   let cart = await Cart.findOne({ userId: req.user._id })
   let item = cart.cartItems.find((item) => item.product == req.params.id)
   if (!item) return next(new AppError("Product is not found", 404))
-  item.quantity = req.body.quantity
+  if (req.body.quantity >= 0) {
+    item.quantity = req.body.quantity
+  } else {
+    res.json({ message: "Quantity must be zero or more" })
+  }
   console.log(item)
   calcTotalPrice(cart)
   cart.save()
